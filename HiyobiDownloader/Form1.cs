@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using RestSharp;
 using Newtonsoft.Json.Linq;
+using System.Net;
 
 namespace HiyobiDownloader
 {
@@ -18,9 +19,9 @@ namespace HiyobiDownloader
         public static PictureBox[] pictureBoxes = new PictureBox[15];
         public static int page = 1;
         public static JObject loadedDatabase = null;
-        public static int selectedIndex = 0;
+        public static int selectedIndex = -1;
         public static string selectedInfo = null;
-
+        public static JToken selectedData = null;
 
         public Form1()
         {
@@ -50,6 +51,7 @@ namespace HiyobiDownloader
             if (e.KeyCode == Keys.Enter)
             {
                 page = 1;
+                selectedIndex = -1;
                 pageLabel.Text = page + "";
                 start();
             }
@@ -93,6 +95,7 @@ namespace HiyobiDownloader
         private void button1_Click(object sender, EventArgs e)
         {
             page = 1;
+            selectedIndex = -1;
             pageLabel.Text = page + "";
             start();
         }
@@ -100,7 +103,7 @@ namespace HiyobiDownloader
         private void printSelectedData(int selectedIndex)
         {
             selectedInfo = "";
-            JToken selectedData = loadedDatabase["list"][selectedIndex];
+            selectedData = loadedDatabase["list"][selectedIndex];
             selectedInfo += "[id]" + Environment.NewLine;
             selectedInfo += selectedData["id"] + Environment.NewLine + Environment.NewLine;
             selectedInfo += "[title]" + Environment.NewLine;
@@ -235,7 +238,15 @@ namespace HiyobiDownloader
 
         private void downloadButton_Click(object sender, EventArgs e)
         {
-
+            if (selectedIndex == -1) return;
+            using (WebClient webClient = new WebClient())
+            {
+                string[] urls = Hiyobi.getImageUrls((string)selectedData["id"]);
+                for (int i=0; i<urls.Length; i++)
+                {
+                    webClient.DownloadFile("http://yoururl.com/image.png", "image.png");
+                }
+            }
         }
     }
 
