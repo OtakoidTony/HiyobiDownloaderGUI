@@ -14,7 +14,7 @@ namespace HiyobiDownloader
 {
     public partial class Form1 : Form
     {
-        
+
         public static PictureBox[] pictureBoxes = new PictureBox[15];
         public static int page = 1;
         public static JObject loadedDatabase = null;
@@ -42,7 +42,7 @@ namespace HiyobiDownloader
             pictureBoxes[14] = pictureBox15;
 
             foreach (PictureBox i in pictureBoxes) i.SizeMode = PictureBoxSizeMode.Zoom;
-            
+
         }
 
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
@@ -57,9 +57,9 @@ namespace HiyobiDownloader
 
         private void start()
         {
-            String tags = textBox1.Text;
-            String[] tagsStringArray = Hiyobi.tagsToArray(tags);
-            String res = Hiyobi.search(tagsStringArray, page);
+            string tags = textBox1.Text;
+            string[] tagsStringArray = Hiyobi.tagsToArray(tags);
+            string res = Hiyobi.search(tagsStringArray, page);
             debugTextBox.Text = res;
 
             loadedDatabase = JObject.Parse(res);
@@ -88,7 +88,7 @@ namespace HiyobiDownloader
 
             }
         }
-        
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -222,7 +222,7 @@ namespace HiyobiDownloader
         {
             if (page == 1) return;
             page -= 1;
-            pageLabel.Text = page+"";
+            pageLabel.Text = page + "";
             start();
         }
 
@@ -261,14 +261,30 @@ namespace HiyobiDownloader
             return response.Content;
         }
 
-        public static String getCoverImageUrl(int number)
+        public static string getCoverImageUrl(int number)
         {
             return "https://cdn.hiyobi.me/tn/" + number + ".jpg";
         }
 
-        public static String getCoverImageUrl(string number)
+        public static string getCoverImageUrl(string number)
         {
             return "https://cdn.hiyobi.me/tn/" + number + ".jpg";
+        }
+
+        public static string[] getImageUrls(string number)
+        {
+            string requestUrl = "https://cdn.hiyobi.me/data/json/" + number + "_list.json";
+            var client = new RestClient(requestUrl);
+            client.Timeout = -1;
+            var request = new RestRequest(Method.GET);
+            IRestResponse response = client.Execute(request);
+            JArray parsedArr = JArray.Parse(response.Content);
+            string[] res = new string[parsedArr.Count()];
+            for (var i = 0; i < res.Length; i++)
+            {
+                res[i] = "https://cdn.hiyobi.me/data/" + number + "/" + parsedArr[i]["name"];
+            }
+            return res;
         }
     }
 }
