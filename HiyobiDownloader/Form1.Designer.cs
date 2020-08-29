@@ -51,7 +51,7 @@
             this.gotoNextPageButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.button2 = new System.Windows.Forms.Button();
+            this.downloadButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -282,14 +282,15 @@
             this.progressBar1.Size = new System.Drawing.Size(962, 27);
             this.progressBar1.TabIndex = 22;
             // 
-            // button2
+            // downloadButton
             // 
-            this.button2.Location = new System.Drawing.Point(12, 638);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(142, 28);
-            this.button2.TabIndex = 23;
-            this.button2.Text = "Download";
-            this.button2.UseVisualStyleBackColor = true;
+            this.downloadButton.Location = new System.Drawing.Point(12, 638);
+            this.downloadButton.Name = "downloadButton";
+            this.downloadButton.Size = new System.Drawing.Size(142, 28);
+            this.downloadButton.TabIndex = 23;
+            this.downloadButton.Text = "Download";
+            this.downloadButton.UseVisualStyleBackColor = true;
+            this.downloadButton.Click += new System.EventHandler(this.downloadButton_Click);
             // 
             // Form1
             // 
@@ -297,7 +298,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1136, 675);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.downloadButton);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox15);
@@ -368,7 +369,7 @@
         private System.Windows.Forms.Button gotoNextPageButton;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button downloadButton;
     }
 }
 

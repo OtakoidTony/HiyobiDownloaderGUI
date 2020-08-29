@@ -232,6 +232,11 @@ namespace HiyobiDownloader
             pageLabel.Text = page + "";
             start();
         }
+
+        private void downloadButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
     class Hiyobi
