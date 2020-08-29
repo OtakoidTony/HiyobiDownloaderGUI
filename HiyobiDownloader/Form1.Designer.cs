@@ -50,6 +50,8 @@
             this.gotoPrevPageButton = new System.Windows.Forms.Button();
             this.gotoNextPageButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -237,7 +239,7 @@
             this.pageLabel.AutoSize = true;
             this.pageLabel.Location = new System.Drawing.Point(67, 8);
             this.pageLabel.Name = "pageLabel";
-            this.pageLabel.Size = new System.Drawing.Size(19, 19);
+            this.pageLabel.Size = new System.Drawing.Size(15, 15);
             this.pageLabel.TabIndex = 18;
             this.pageLabel.Text = "1";
             this.pageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -268,17 +270,35 @@
             this.panel1.Controls.Add(this.gotoPrevPageButton);
             this.panel1.Controls.Add(this.gotoNextPageButton);
             this.panel1.Controls.Add(this.pageLabel);
-            this.panel1.Location = new System.Drawing.Point(943, 12);
+            this.panel1.Location = new System.Drawing.Point(970, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(171, 34);
+            this.panel1.Size = new System.Drawing.Size(163, 34);
             this.panel1.TabIndex = 21;
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(160, 639);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(962, 27);
+            this.progressBar1.TabIndex = 22;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(12, 638);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(142, 28);
+            this.button2.TabIndex = 23;
+            this.button2.Text = "Download";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1136, 695);
+            this.ClientSize = new System.Drawing.Size(1136, 675);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox15);
             this.Controls.Add(this.pictureBox14);
@@ -347,6 +367,8 @@
         private System.Windows.Forms.Button gotoPrevPageButton;
         private System.Windows.Forms.Button gotoNextPageButton;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Button button2;
     }
 }
 
