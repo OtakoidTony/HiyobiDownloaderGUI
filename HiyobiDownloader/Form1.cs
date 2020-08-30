@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using RestSharp;
 using Newtonsoft.Json.Linq;
 using System.Net;
-
+using System.IO;
 
 namespace HiyobiDownloader
 {
@@ -261,12 +261,30 @@ namespace HiyobiDownloader
                 string[] filenames = Hiyobi.getImageFileName((string)selectedData["id"]);
                 string galleryId = selectedData["id"] + "";
                 string baseUrl = "https://cdn.hiyobi.me/data/" + galleryId + "/";
+
+                progressBar1.Style = ProgressBarStyle.Continuous;
+                progressBar1.Minimum = 0;
+                progressBar1.Maximum = filenames.Length - 1;
+                progressBar1.Step = 1;
+                progressBar1.Value = 0;
+                string sDirPath = Application.StartupPath + "\\"+ ((string)selectedData["title"]).Replace("|","｜")+" (" + (string)selectedData["id"]+")";
+                DirectoryInfo di = new DirectoryInfo(sDirPath);
+                if (di.Exists == false)
+                {
+                    di.Create();
+                }
                 for (int i = 0; i < filenames.Length; i++)
                 {
-                    webClient.DownloadFile(baseUrl + filenames[i], filenames[i]);
+                    webClient.DownloadFile(baseUrl + filenames[i], sDirPath +"\\"+ filenames[i]);
+                    progressBar1.PerformStep();
                 }
                 debugTextBox.Text = "다운로드 완료";
             }
+        }
+
+        private void debugTextBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 
