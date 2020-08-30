@@ -1,0 +1,15 @@
+C:\Users\Rojiku\Documents\GitHub\HiyobiDownloaderGUI\HiyobiDownloader\bin\Release\HiyobiDownloader.exe.config
+C:\Users\Rojiku\Documents\GitHub\HiyobiDownloaderGUI\HiyobiDownloader\bin\Release\HiyobiDownloader.exe
+C:\Users\Rojiku\Documents\GitHub\HiyobiDownloaderGUI\HiyobiDownloader\bin\Release\HiyobiDownloader.pdb
+C:\Users\Rojiku\Documents\GitHub\HiyobiDownloaderGUI\HiyobiDownloader\bin\Release\Newtonsoft.Json.dll
+C:\Users\Rojiku\Documents\GitHub\HiyobiDownloaderGUI\HiyobiDownloader\bin\Release\RestSharp.dll
+C:\Users\Rojiku\Documents\GitHub\HiyobiDownloaderGUI\HiyobiDownloader\bin\Release\Newtonsoft.Json.xml
+C:\Users\Rojiku\Documents\GitHub\HiyobiDownloaderGUI\HiyobiDownloader\bin\Release\RestSharp.xml
+C:\Users\Rojiku\Documents\GitHub\HiyobiDownloaderGUI\HiyobiDownloader\obj\Release\HiyobiDownloader.csprojAssemblyReference.cache
+C:\Users\Rojiku\Documents\GitHub\HiyobiDownloaderGUI\HiyobiDownloader\obj\Release\HiyobiDownloader.Form1.resources
+C:\Users\Rojiku\Documents\GitHub\HiyobiDownloaderGUI\HiyobiDownloader\obj\Release\HiyobiDownloader.Properties.Resources.resources
+C:\Users\Rojiku\Documents\GitHub\HiyobiDownloaderGUI\HiyobiDownloader\obj\Release\HiyobiDownloader.csproj.GenerateResource.cache
+C:\Users\Rojiku\Documents\GitHub\HiyobiDownloaderGUI\HiyobiDownloader\obj\Release\HiyobiDownloader.csproj.CoreCompileInputs.cache
+C:\Users\Rojiku\Documents\GitHub\HiyobiDownloaderGUI\HiyobiDownloader\obj\Release\HiyobiDownloader.csproj.CopyComplete
+C:\Users\Rojiku\Documents\GitHub\HiyobiDownloaderGUI\HiyobiDownloader\obj\Release\HiyobiDownloader.exe
+C:\Users\Rojiku\Documents\GitHub\HiyobiDownloaderGUI\HiyobiDownloader\obj\Release\HiyobiDownloader.pdb

@@ -11,6 +11,7 @@ using RestSharp;
 using Newtonsoft.Json.Linq;
 using System.Net;
 
+
 namespace HiyobiDownloader
 {
     public partial class Form1 : Form
@@ -22,7 +23,6 @@ namespace HiyobiDownloader
         public static int selectedIndex = -1;
         public static string selectedInfo = null;
         public static JToken selectedData = null;
-
         public Form1()
         {
             InitializeComponent();
@@ -102,8 +102,24 @@ namespace HiyobiDownloader
 
         private void printSelectedData(int selectedIndex)
         {
+            Form1.selectedIndex = selectedIndex;
             selectedInfo = "";
-            selectedData = loadedDatabase["list"][selectedIndex];
+            try
+            {
+                selectedData = loadedDatabase["list"][selectedIndex];
+            }
+            catch (System.NullReferenceException e)
+            {
+                selectedData = -1;
+                debugTextBox.Text = "NullReferenceException";
+                return;
+            }
+            catch (System.ArgumentOutOfRangeException)
+            {
+                selectedData = -1;
+                debugTextBox.Text = "ArgumentOutOfRangeException";
+                return;
+            }
             selectedInfo += "[id]" + Environment.NewLine;
             selectedInfo += selectedData["id"] + Environment.NewLine + Environment.NewLine;
             selectedInfo += "[title]" + Environment.NewLine;
@@ -241,6 +257,7 @@ namespace HiyobiDownloader
             if (selectedIndex == -1) return;
             using (WebClient webClient = new WebClient())
             {
+                debugTextBox.Text = "다운로드 시작";
                 string[] filenames = Hiyobi.getImageFileName((string)selectedData["id"]);
                 string galleryId = selectedData["id"] + "";
                 string baseUrl = "https://cdn.hiyobi.me/data/" + galleryId + "/";
@@ -248,6 +265,7 @@ namespace HiyobiDownloader
                 {
                     webClient.DownloadFile(baseUrl + filenames[i], filenames[i]);
                 }
+                debugTextBox.Text = "다운로드 완료";
             }
         }
     }
