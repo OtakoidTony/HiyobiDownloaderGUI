@@ -241,10 +241,12 @@ namespace HiyobiDownloader
             if (selectedIndex == -1) return;
             using (WebClient webClient = new WebClient())
             {
-                string[] urls = Hiyobi.getImageUrls((string)selectedData["id"]);
-                for (int i=0; i<urls.Length; i++)
+                string[] filenames = Hiyobi.getImageFileName((string)selectedData["id"]);
+                string galleryId = selectedData["id"] + "";
+                string baseUrl = "https://cdn.hiyobi.me/data/" + galleryId + "/";
+                for (int i = 0; i < filenames.Length; i++)
                 {
-                    webClient.DownloadFile("http://yoururl.com/image.png", "image.png");
+                    webClient.DownloadFile(baseUrl + filenames[i], filenames[i]);
                 }
             }
         }
@@ -299,6 +301,22 @@ namespace HiyobiDownloader
             for (var i = 0; i < res.Length; i++)
             {
                 res[i] = "https://cdn.hiyobi.me/data/" + number + "/" + parsedArr[i]["name"];
+            }
+            return res;
+        }
+
+        public static string[] getImageFileName(string number)
+        {
+            string requestUrl = "https://cdn.hiyobi.me/data/json/" + number + "_list.json";
+            var client = new RestClient(requestUrl);
+            client.Timeout = -1;
+            var request = new RestRequest(Method.GET);
+            IRestResponse response = client.Execute(request);
+            JArray parsedArr = JArray.Parse(response.Content);
+            string[] res = new string[parsedArr.Count()];
+            for (var i = 0; i < res.Length; i++)
+            {
+                res[i] = parsedArr[i]["name"] + "";
             }
             return res;
         }
